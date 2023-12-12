@@ -38,3 +38,4 @@ const fullName3 = [
 const [fName3, lName3] = fullName3
 
 console.log(fName3, lName3);
+
