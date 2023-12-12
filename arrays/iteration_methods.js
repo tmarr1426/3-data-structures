@@ -70,7 +70,9 @@ console.log(movieList);
 movieList.splice(1,1,"Hot Rod")
 console.log(movieList);
 
+let num = [1,2,3,4,5];
 
+console.log(num.reverse());
 
 
 
