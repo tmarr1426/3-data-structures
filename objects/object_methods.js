@@ -62,6 +62,6 @@ console.log(theSimpsons);
 Object.freeze(theSimpsons);
 theSimpsons.id = 2;
 
-console.log(theSimpsons.id);
+console.log(theSimpsons.id); // Obj remains the same since it is frozen
 
 
