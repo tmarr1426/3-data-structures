@@ -41,8 +41,8 @@ class NewObject {
 
 let newObj = new NewObject();
 
-console.log(newObj);
-console.log(typeof newObj);
+//console.log(newObj);
+//console.log(typeof newObj);
 
 
 // 1   2
@@ -113,18 +113,57 @@ class Expense {
         this.sell_at = s;
         this.sales_tax; // currently shows as undefined
     }
+    addTax(per) {
+        let percentage = per;
+        let sellingAtCost = this.sell_at;
+        this.sales_tax = (sellingAtCost + sellingAtCost * percentage).toFixed(2);
+    }
 }
 
 // let itemToSell = new Expense (5, 7);
 let itemToSell = Expense.addUpchargeForProfit(1, 0.2);
+let itemToSell2 = Expense.addUpchargeForProfit(1, 0.2);
+let itemToSell3 = Expense.addUpchargeForProfit(5, 0.5);
 
-console.log(itemToSell);
+// console.log(itemToSell);
+itemToSell2.addTax(.07);
+// console.log(itemToSell2);
+itemToSell3.addTax(0.99);
+// console.log(itemToSell3);
+// console.log(
+//     `Price Paid: $${itemToSell3.purchased_price.toFixed(2)}\n
+//     Selling Price: $${itemToSell3.sell_at.toFixed(2)}\n
+//     Profit: $${(itemToSell3.sell_at-itemToSell3.purchased_price).toFixed(2)}
+//     `
+// );
 
+//  ? Inheritance
+//  * Essentially copies the information from the extended class when setting a new class.
 
+class Car {
+    constructor(brand){
+        this.brandName = brand;
+    }
+    present(){
+        return `I have a ${this.brandName}`;
+    }
+}
 
+// let myCar = new Car("Tesla")
+// console.log(myCar.present());
 
+class Model extends Car{
+    constructor(brandName, mod){
+        super(brandName);
+        this.model = mod;
+    }
 
+    show(){
+        return `${this.present()} and it is a ${this.model}`
+    }
+}
 
-
-
-
+let myCar1 = new Model("Ford", "Fiesta")
+let myCar2 = new Model("Tesla", "Cybertruck")
+console.log(myCar1.show());
+console.log(myCar2.show());
