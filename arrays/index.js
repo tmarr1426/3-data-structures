@@ -62,6 +62,7 @@ console.log(sliced);
 
 //* .pop() - Removes the last item in an array
 
+let food = ["Pecan Pie", "Shrimp", "Quesadilla", "Cheese Cake", "Hotdog"];
 food.pop();
 console.log("POP:", food);
 
