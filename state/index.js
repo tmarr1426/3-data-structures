@@ -67,10 +67,10 @@ let stateMachine = {
 const myUniqueObject = Object.create(stateMachine);
 //console.log(Object.getPrototypeOf(myUniqueObject));
 myUniqueObject.dispatcher("freeze");
-myUniqueObject.dispatcher("freeze");
+myUniqueObject.dispatcher("freeze"); //! Errors out
 myUniqueObject.dispatcher("melt");
 myUniqueObject.dispatcher("vaporize");
-myUniqueObject.dispatcher("freeze");
+myUniqueObject.dispatcher("freeze"); //! Errors out
 myUniqueObject.dispatcher("condense");
 
 
