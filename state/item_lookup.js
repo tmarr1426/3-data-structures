@@ -44,10 +44,34 @@ let inventory = {
         },
     },
 };
-
+const showInventory =() => {
+    console.log("-----------");
+    console.log("Inventory:");
+    Object.keys(inventory).forEach((item) => {
+        console.log(item + ":", inventory[item].name);
+    });
+    console.log("-----------");
+}
 const interact =(action,target) => {
+    if (inventory[action]){
+        console.log("Available Actions:")
+        Object.keys(inventory[action]).forEach((prop) => {
+            if (typeof inventory[action][prop] === "function") {
+                console.log(prop);
+            }
+        });
+        return;
+    }
+
+    if(validInvCommands.includes(action)) {
+        showInventory();
+        return;
+    }
+
+
     const validItem = inventory[target];
-    const validAction = inventory[target][action];
+    //const validAction = inventory[target][action]; //! Will give error if there is no item that matches the target.
+    const validAction = inventory[target]?.[action];
     if (validAction && typeof validAction === "function") {
         console.log("Action can be done 👍.");
         if (validItem) {
@@ -61,19 +85,36 @@ const interact =(action,target) => {
     }
 };
 
-//interact("swing", "axe");
 
 const start = async() => {
     try {
         let response;
         while (response !== "exit"){
             response = await ask("What do you want to do?");
-        }
+
+            let splitResponse = response.split(" ");
+            //let action = splitResponse[0];
+            //let target = splitResponse[1];
+
+            //? OR
+
+            let [action, target] = splitResponse;
+
+            if (action && target) {
+                // User provided 2 word input
+                interact (action,target);
+            } else if (action){
+                // handle single input
+                interact (action, "");
+            } else {
+                console.log("I don't know what that is.");
+            };
+        };
         process.exit();
     } catch(err){
         console.log(err);
         await start();
     }
-}
+};
 
 start();
