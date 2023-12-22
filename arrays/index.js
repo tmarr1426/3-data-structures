@@ -57,6 +57,7 @@ console.log("SPLICE2:", food);
 
 //* .slice() - Can store a segment of an array
 
+let food = ["Pecan Pie", "Shrimp", "Quesadilla", "Cheese Cake", "Hotdog"];
 let sliced = food.slice(1, 3);
 console.log(sliced);
 
